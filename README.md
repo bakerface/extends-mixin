@@ -73,7 +73,7 @@ While this appears ok for two mixins, it becomes difficult to read as the number
 of mixins increase. Consider the following:
 
 ``` javascript
-const CustomPerson = canGetFirstName(canGetLastName(canGetChildren(canGetSiblings))));
+const CustomPerson = canGetFirstName(canGetLastName(canGetChildren(canGetSiblings(Person))));
 ```
 
 The purpose of this package is to make this easier by allow you to do this:
@@ -96,8 +96,7 @@ You can also pass each mixin as an argument if it makes you feel better:
 ``` javascript
 const mix = require('extends-mixin');
 
-const canGetAncestry = mix(canGetFirstName,
-	canGetLastName, canGetChildren, canGetSiblings);
+const canGetAncestry = mix(canGetFirstName, canGetLastName, canGetChildren, canGetSiblings);
 
 const CustomPerson = canGetAncestry(Person);
 ```
