@@ -35,6 +35,6 @@ module.exports = function () {
 	var mixins = flatten(arguments);
 
 	return function (base) {
-		return mixins.reduce(sequence, base);
+		return mixins.reduce(sequence, base || function () { });
 	};
 };

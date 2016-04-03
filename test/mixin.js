@@ -32,6 +32,12 @@ class Base {
 	}
 }
 
+const clear = () => Base => class extends Base {
+	calculate() {
+		return 0;
+	}
+};
+
 const plus = n => Base => class extends Base {
 	calculate() {
 		return super.calculate() + n;
@@ -79,5 +85,18 @@ describe('mix(mixins)', function () {
 		const calculator = new Calculator();
 
 		assert.equal(calculator.calculate(), 256);
+	});
+
+	it('should allow an empty target', function () {
+		const mix = mixin([
+			clear(),
+			plus(3),
+			pow(2)
+		]);
+
+		const Calculator = mix();
+		const calculator = new Calculator();
+
+		assert.equal(calculator.calculate(), 9);
 	});
 });
