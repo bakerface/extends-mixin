@@ -96,7 +96,10 @@ You can also pass each mixin as an argument if it makes you feel better:
 ``` javascript
 const mix = require('extends-mixin');
 
-const canGetAncestry = mix(canGetFirstName, canGetLastName, canGetChildren, canGetSiblings);
+const canGetAncestry = mix(canGetFirstName,
+	canGetLastName,
+	canGetChildren,
+	canGetSiblings);
 
 const CustomPerson = canGetAncestry(Person);
 ```
