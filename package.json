@@ -1,6 +1,6 @@
 {
   "name": "extends-mixin",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "ES6 mixins brought to you by inheritance",
   "main": "index.js",
   "author": "Christopher M. Baker",

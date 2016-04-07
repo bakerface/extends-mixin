@@ -128,4 +128,12 @@ const canGetAncestry = mix(canGetFirstAndLastName, canGetChildrenAndSiblings);
 const CustomPerson = canGetAncestry(Person);
 ```
 
+As a convenience, a function is provided for loading all mixins within a
+directory. Nested directories are required as normal. Only files with `.js` extensions are accepted and `index.js` is ignored. A typical `index.js` would be the following:
+
+``` javascript
+const all = require('extends-mixin/all');
+module.exports = all(__dirname);
+```
+
 Pull requests and bug reports are welcome, as always.
