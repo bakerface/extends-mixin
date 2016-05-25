@@ -24,7 +24,7 @@
 'use strict';
 
 function flatten(args) {
-	return [].concat.apply([], [].slice.call(args));
+	return [].concat.apply([], args);
 }
 
 function sequence(base, mixin) {
