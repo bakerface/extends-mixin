@@ -1,7 +1,7 @@
 {
   "name": "extends-mixin",
-  "version": "1.2.2",
-  "description": "Predictable micro-service architecture",
+  "version": "1.2.3",
+  "description": "ES6 mixins brought to you by inheritance",
   "author": "Chris Baker <mail.chris.baker@gmail.com>",
   "license": "MIT",
   "main": "index.js",
