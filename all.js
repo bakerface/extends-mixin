@@ -28,35 +28,35 @@ var path = require('path');
 var mix = require('.');
 
 function prefix(directory) {
-	return function (dirent) {
-		return path.join(directory, dirent);
-	};
+  return function (dirent) {
+    return path.join(directory, dirent);
+  };
 }
 
 function javascript(dirent) {
-	if (fs.statSync(dirent).isFile()) {
-		return path.extname(dirent) === '.js';
-	}
+  if (fs.statSync(dirent).isFile()) {
+    return path.extname(dirent) === '.js';
+  }
 
-	return true;
+  return true;
 }
 
 function ignored(dirent) {
-	return path.basename(dirent) !== 'index.js';
+  return path.basename(dirent) !== 'index.js';
 }
 
 function required(dirent) {
-	return require(dirent);
+  return require(dirent);
 }
 
 module.exports = function () {
-	var directory = path.join.apply(this, arguments);
+  var directory = path.join.apply(this, arguments);
 
-	var mixins = fs.readdirSync(directory)
-		.map(prefix(directory))
-		.filter(javascript)
-		.filter(ignored)
-		.map(required);
+  var mixins = fs.readdirSync(directory)
+    .map(prefix(directory))
+    .filter(javascript)
+    .filter(ignored)
+    .map(required);
 
-	return mix(mixins);
+  return mix(mixins);
 };

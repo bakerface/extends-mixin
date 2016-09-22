@@ -24,6 +24,7 @@
 'use strict';
 
 const all = require('../../all');
+
 const mix = all(__dirname);
 
 module.exports = mix();

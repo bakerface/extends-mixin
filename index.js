@@ -24,17 +24,17 @@
 'use strict';
 
 function flatten(args) {
-	return [].concat.apply([], args);
+  return [].concat.apply([], args);
 }
 
 function sequence(base, mixin) {
-	return mixin(base);
+  return mixin(base);
 }
 
 module.exports = function () {
-	var mixins = flatten(arguments);
+  var mixins = flatten(arguments);
 
-	return function (base) {
-		return mixins.reduce(sequence, base || function () { });
-	};
+  return function (base) {
+    return mixins.reduce(sequence, base || function () { });
+  };
 };

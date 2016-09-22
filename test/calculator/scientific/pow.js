@@ -24,7 +24,7 @@
 'use strict';
 
 module.exports = Calculator => class extends Calculator {
-	pow(n) {
-		this.value = Math.pow(this.value, n);
-	}
+  pow(n) {
+    this.value = Math.pow(this.value, n);
+  }
 };

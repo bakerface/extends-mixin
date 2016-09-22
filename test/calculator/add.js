@@ -24,7 +24,7 @@
 'use strict';
 
 module.exports = Calculator => class extends Calculator {
-	add(n) {
-		this.value += n;
-	}
+  add(n) {
+    this.value += n;
+  }
 };

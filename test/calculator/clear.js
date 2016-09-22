@@ -24,7 +24,7 @@
 'use strict';
 
 module.exports = Calculator => class extends Calculator {
-	clear() {
-		this.value = 0;
-	}
+  clear() {
+    this.value = 0;
+  }
 };

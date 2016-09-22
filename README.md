@@ -58,7 +58,7 @@ assert.equal(john.name, 'John Doe');
 assert.equal(john.last, 'Doe');
 ```
 
-If we want to combine the mixins, we can do this:
+If we want to combine the mixins, we would typically do something like this:
 
 ``` javascript
 const PersonWithFirstAndLastName = canGetFirstName(canGetLastName(Person));
@@ -76,7 +76,7 @@ of mixins increase. Consider the following:
 const CustomPerson = canGetFirstName(canGetLastName(canGetChildren(canGetSiblings(Person))));
 ```
 
-The purpose of this package is to make this easier by allow you to do this:
+The purpose of this package is to make combining mixins easier by allowing you to do this:
 
 ``` javascript
 const mix = require('extends-mixin');
@@ -91,15 +91,17 @@ const canGetAncestry = mix([
 const CustomPerson = canGetAncestry(Person);
 ```
 
-You can also pass each mixin as an argument if it makes you feel better:
+You can also pass each mixin as an argument if it is more convenient:
 
 ``` javascript
 const mix = require('extends-mixin');
 
-const canGetAncestry = mix(canGetFirstName,
+const canGetAncestry = mix(
+  canGetFirstName,
 	canGetLastName,
 	canGetChildren,
-	canGetSiblings);
+	canGetSiblings
+);
 
 const CustomPerson = canGetAncestry(Person);
 ```
@@ -108,8 +110,8 @@ If your mixin list happens to be empty, the identity function is returned:
 
 ``` javascript
 const mix = require('extends-mixin');
-const doNothing = mix();
-const JustAPerson = doNothing(Person);
+const identity = mix();
+const JustAPerson = identity(Person);
 
 const john = new JustAPerson('John Doe');
 assert.equal(john.name, 'John Doe');
@@ -132,8 +134,7 @@ As a convenience, a function is provided for loading all mixins within a
 directory. Nested directories are required as normal. Only files with `.js` extensions are accepted and `index.js` is ignored. A typical `index.js` would be the following:
 
 ``` javascript
-const all = require('extends-mixin/all');
-module.exports = all(__dirname);
+module.exports = require('extends-mixin/all')(__dirname);
 ```
 
 Pull requests and bug reports are welcome, as always.

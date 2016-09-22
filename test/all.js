@@ -27,30 +27,30 @@ const assert = require('assert');
 const Calculator = require('./calculator');
 
 describe('all(...path)', function () {
-	it('should be able to create', function () {
-		const calculator = new Calculator();
-		assert.equal(calculator.value, undefined);
-	});
+  it('should be able to create', function () {
+    const calculator = new Calculator();
+    assert.equal(calculator.value, undefined);
+  });
 
-	it('should be able to clear', function () {
-		const calculator = new Calculator();
-		calculator.clear();
-		assert.equal(calculator.value, 0);
-	});
+  it('should be able to clear', function () {
+    const calculator = new Calculator();
+    calculator.clear();
+    assert.equal(calculator.value, 0);
+  });
 
-	it('should be able to add', function () {
-		const calculator = new Calculator();
-		calculator.clear();
-		calculator.add(1);
-		calculator.add(2);
-		assert.equal(calculator.value, 3);
-	});
+  it('should be able to add', function () {
+    const calculator = new Calculator();
+    calculator.clear();
+    calculator.add(1);
+    calculator.add(2);
+    assert.equal(calculator.value, 3);
+  });
 
-	it('should be able to pow', function () {
-		const calculator = new Calculator();
-		calculator.clear();
-		calculator.add(2);
-		calculator.pow(8);
-		assert.equal(calculator.value, 256);
-	});
+  it('should be able to pow', function () {
+    const calculator = new Calculator();
+    calculator.clear();
+    calculator.add(2);
+    calculator.pow(8);
+    assert.equal(calculator.value, 256);
+  });
 });
