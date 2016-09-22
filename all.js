@@ -25,7 +25,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var mix = require('.');
+var mix = require('./');
 
 function prefix(directory) {
   return function (dirent) {
