@@ -17,9 +17,9 @@ to include accessors for accessing a person's first and last name.
 
 ``` javascript
 class Person {
-	constructor(name) {
-		this.name = name;
-	}
+  constructor(name) {
+    this.name = name;
+  }
 }
 
 const john = new Person('John Doe');
@@ -30,9 +30,9 @@ We can create a mixin to get the first name like so:
 
 ``` javascript
 const canGetFirstName = Base => class extends Base {
-	get first() {
-		return this.name.split(' ').shift();
-	}
+  get first() {
+    return this.name.split(' ').shift();
+  }
 };
 
 const PersonWithFirstName = canGetFirstName(Person);
@@ -46,9 +46,9 @@ We can also create another mixin to get the last name like so:
 
 ``` javascript
 const canGetLastName = Base => class extends Base {
-	get last() {
-		return this.name.split(' ').pop();
-	}
+  get last() {
+    return this.name.split(' ').pop();
+  }
 };
 
 const PersonWithLastName = canGetLastName(Person);
@@ -82,10 +82,10 @@ The purpose of this package is to make combining mixins easier by allowing you t
 const mix = require('extends-mixin');
 
 const canGetAncestry = mix([
-	canGetFirstName,
-	canGetLastName,
-	canGetChildren,
-	canGetSiblings
+  canGetFirstName,
+  canGetLastName,
+  canGetChildren,
+  canGetSiblings
 ]);
 
 const CustomPerson = canGetAncestry(Person);
@@ -98,9 +98,9 @@ const mix = require('extends-mixin');
 
 const canGetAncestry = mix(
   canGetFirstName,
-	canGetLastName,
-	canGetChildren,
-	canGetSiblings
+  canGetLastName,
+  canGetChildren,
+  canGetSiblings
 );
 
 const CustomPerson = canGetAncestry(Person);

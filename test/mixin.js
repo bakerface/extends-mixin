@@ -27,24 +27,54 @@ const mixin = require('..');
 const assert = require('assert');
 
 class Base {
+  static calculate() {
+    return 0;
+  }
+
   calculate() {
     return 0;
   }
 }
 
+Base.canBase = true;
+
 const clear = () => Base => class extends Base {
+  static get canClear() {
+    return true;
+  }
+
+  static calculate() {
+    return 0;
+  }
+
   calculate() {
     return 0;
   }
 };
 
 const plus = n => Base => class extends Base {
+  static get canPlus() {
+    return true;
+  }
+
+  static calculate() {
+    return Base.calculate() + n;
+  }
+
   calculate() {
     return super.calculate() + n;
   }
 };
 
 const pow = n => Base => class extends Base {
+  static get canPow() {
+    return true;
+  }
+
+  static calculate() {
+    return Math.pow(Base.calculate(), n);
+  }
+
   calculate() {
     return Math.pow(super.calculate(), n);
   }
@@ -98,5 +128,29 @@ describe('mix(mixins)', function () {
     const calculator = new Calculator();
 
     assert.equal(calculator.calculate(), 9);
+  });
+
+  it('should mix static properties', function () {
+    const mix = mixin([
+      plus(2),
+      pow(8)
+    ]);
+
+    const Calculator = mix(Base);
+
+    assert.equal(Calculator.canBase, true);
+    assert.equal(Calculator.canPlus, true);
+    assert.equal(Calculator.canPow, true);
+    assert.equal(Calculator.canClear, undefined);
+  });
+
+  it('should mix static functions', function () {
+    const mix = mixin([
+      plus(2),
+      pow(8)
+    ]);
+
+    const Calculator = mix(Base);
+    assert.equal(Calculator.calculate(), 256);
   });
 });
